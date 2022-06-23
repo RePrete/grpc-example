@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  build-server:
+    cmds:
+      - protoc --go_out=./greeter_server --go-grpc_out=./greeter_server --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative ./protos/*.proto
+  build-client:
+    cmds:
+      - python -m grpc_tools.protoc -I. --python_out=./greeter_client --grpc_python_out=./greeter_client ./protos/*.proto

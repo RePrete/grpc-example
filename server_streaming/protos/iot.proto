@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "google.golang.org/grpc/examples/iot";
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+
+import "google/protobuf/empty.proto";
+
+package iot;
+
+service IotServer {
+  rpc GetEvents (google.protobuf.Empty) returns (stream Event) {}
+}
+
+message Event {
+  string status = 1;
+}
